@@ -1,48 +1,51 @@
-<html ng-app>
+<html ng-app="myApp">
 <head>
     <meta charset="utf-8" />    
     <title>AngularJS Contentful Test</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
     <link rel="stylesheet" href="stylesheet.css">
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.js"></script>
+    <script src="/modules/angular-contentful.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/myApp.js" type="text/javascript"></script>
 </head>
 
-<body ng-init="articles = ['Pizza Margherita', 'Pizza Tonno', 'Pizza Sardinia', 'Pizza Hawaii', 'Pizza Prosciutto']">
+<body>
     <div id="app-container">
         <div id="app-header">
             <div class="xl-box">
-                <h1>AngularJS Tutorial <small>filtering with directives</small></h1>
+                <h1>AngularJS Contentful <small>getting data from the Contentful CDN</small></h1>
             </div>
         </div>
         <div id="app-content">
             <div class="xl-box">
-                
+
                 <section>
                     <div class="xl-box">
-                        <h3>ng-search directive</h3>
-                        <label>Input Field:</label>
-                        <input type="text" ng-model="search">
-                    </div>
-                </section>
 
-                <section>
-                    <div class="xl-box" ng-hide="search">
-                        <h2>Welcome to John's Pizza!</h2>
-                        <p>Please enter the name of the Pizza you'd like to eat in the box up there.</p>
-                    </div>
-                    <div class="xl-box" ng-show="search">
-                        <h3>For..In Loop</h3>
-                        <table>
-                            <tr ng-repeat="article in articles | filter:search">
-                                <td>{{ article }}</td>
-                            </tr>
-                        </table>
+                        <ul style="list-style: none;" contentful-entries="'content_type=6j3jshY25OQEqMoMsOiAC0'">
+                            <li style="padding: 1em;" ng-repeat="user in $contentfulEntries.items">
+                                {{ user.fields.name }}
+                                <br>
+                                <small>{{ user.fields.job }}</small>
+                            </li>
+                        </ul>
 
                     </div>
+
+                    <div class="xl-box">
+
+                    </div>
+
                 </section>
 
             </div>
         </div>
     </div>
+
+
+    <div class="footer">
+        <a class="footer-link" href="http://www.xrlabs.de">► xrlabs</a>
+    </div>
+
 </body>
 </html>

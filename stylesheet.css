@@ -71,6 +71,24 @@ section {
     padding: 1em;
 }
 
+a.footer-link {
+     transition: background 0.5s;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    display: inline-block;
+    padding: 1em;
+    color: #333;
+    text-decoration: none;
+}
+
+a.footer-link:hover {
+    color: #000;
+    background: rgba(255,255,255,1);
+}
+
 
 /* -------------------------------------- */
 /* Mobile Only
@@ -79,5 +97,12 @@ section {
 @media screen and (max-width: 48em) {
     #app-container {
         width: 100%;
+    }
+    h1 small,
+    h2 small,
+    h3 small {
+        display: block;
+        margin-top: 0.5em;
+        line-height: 1;
     }
 }
